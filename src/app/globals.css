@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --background: #ffffff;
+  --foreground: #1a1a1a;
+  --muted: #8a8a8a;
+  --accent: #3b7dd8;
+  --secondary: #7b5bb6;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #eeeeee;
+  --muted: #808080;
+  --accent: #fab283;
+  --secondary: #5c9cf5;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
