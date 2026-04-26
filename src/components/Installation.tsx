@@ -1,3 +1,5 @@
+'use client'
+
 import { Copy, Check } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
@@ -53,7 +55,6 @@ export default function Installation() {
                 </code>
                 <Button
                   variant="outline"
-                  size="sm"
                   onClick={() => copyToClipboard(item.command)}
                   className="gap-1"
                 >
