@@ -10,6 +10,7 @@
   --muted: #8a8a8a;
   --accent: #3b7dd8;
   --secondary: #7b5bb6;
+  --primary: #fab283;
 }
 
 .dark {
@@ -18,6 +19,7 @@
   --muted: #808080;
   --accent: #fab283;
   --secondary: #5c9cf5;
+  --primary: #fab283;
 }
 
 body {
