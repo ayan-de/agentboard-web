@@ -8,7 +8,7 @@ import { useState } from 'react'
 const installCommands = [
   {
     label: 'Download & Install',
-    command: 'curl -sSL https://raw.githubusercontent.com/ayan-de/agent-board/main/install.sh | bash',
+    command: 'curl -sSL https://agentboard.ayande.xyz/install.sh | bash',
   },
   {
     label: 'Add to PATH',
