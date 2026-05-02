@@ -1,4 +1,4 @@
-import { Terminal } from 'lucide-react'
+import { Terminal, Download } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 
@@ -18,6 +18,7 @@ export default function Hero() {
 
           <div className="mt-10 flex items-center justify-center gap-4">
             <Button variant="primary" href="#installation">
+              <Download className="h-4 w-4 mr-2" />
               Download
             </Button>
             <Button

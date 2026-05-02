@@ -1,6 +1,6 @@
 'use client'
 
-import { Github, Menu, X } from 'lucide-react'
+import { Github, Menu, X, Download } from 'lucide-react'
 import { useState } from 'react'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
@@ -45,6 +45,7 @@ export default function Nav() {
                   Star on GitHub
                 </a>
                 <Button variant="primary" size="sm" href="#installation">
+                  <Download className="h-4 w-4 mr-2" />
                   Download
                 </Button>
                 <button
