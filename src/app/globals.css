@@ -5,24 +5,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #1a1a1a;
-  --muted: #8a8a8a;
-  --accent: #3b7dd8;
-  --secondary: #7b5bb6;
-  --primary: #fab283;
+  --background: #F1ECEC;
+  --foreground: #211E1E;
+  --muted: #4B4646;
+  --accent: #211E1E;
+  --secondary: #4B4646;
+  --primary: #211E1E;
 }
 
 .dark {
-  --background: #0a0a0a;
-  --foreground: #eeeeee;
-  --muted: #808080;
-  --accent: #fab283;
-  --secondary: #5c9cf5;
-  --primary: #fab283;
+  --background: #211E1E;
+  --foreground: #F1ECEC;
+  --muted: #9A9595;
+  --accent: #F1ECEC;
+  --secondary: #9A9595;
+  --primary: #F1ECEC;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
+  font-family: 'JetBrains Mono', Consolas, monospace;
+}
+
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: var(--foreground);
+  opacity: 0.1;
+  z-index: 100;
+}
+
+body::before {
+  left: max(80px, calc((100vw - 1280px) / 2));
+}
+
+body::after {
+  right: max(80px, calc((100vw - 1280px) / 2));
 }
