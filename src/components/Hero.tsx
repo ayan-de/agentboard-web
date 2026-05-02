@@ -5,7 +5,7 @@ import Button from '@/components/ui/Button'
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden py-20 sm:py-32">
+    <section id="installation" className="relative overflow-hidden py-20 sm:py-32">
       <Container>
         <div className="mx-auto max-w-3xl text-center">
           <h1 className="text-4xl font-bold tracking-tight sm:text-6xl bg-gradient-to-r from-[var(--accent)] to-[var(--secondary)] bg-clip-text text-transparent">
