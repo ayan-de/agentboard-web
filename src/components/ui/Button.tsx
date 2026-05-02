@@ -25,9 +25,9 @@ export default function Button({
 
   const variants = {
     primary:
-      'bg-[var(--accent)] text-white hover:opacity-90 dark:bg-[var(--accent)] dark:text-[var(--background)]',
+      'bg-[var(--foreground)] text-[var(--background)] hover:opacity-80',
     secondary:
-      'bg-[var(--secondary)] text-white hover:opacity-90 dark:bg-[var(--secondary)] dark:text-white',
+      'bg-[var(--muted)] text-[var(--background)] hover:opacity-80',
     outline:
       'border border-[var(--foreground)]/20 hover:bg-[var(--foreground)]/5',
   }
