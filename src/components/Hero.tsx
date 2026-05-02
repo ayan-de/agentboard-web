@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { Terminal, Download } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
@@ -45,9 +46,12 @@ export default function Hero() {
               </div>
             </div>
             <div className="relative aspect-video overflow-hidden rounded-lg bg-[var(--background)]">
-              <div className="absolute inset-0 flex items-center justify-center text-[var(--muted)]">
-                TUI preview placeholder
-              </div>
+              <Image
+                src="/image.png"
+                alt="AgentBoard TUI Preview"
+                fill
+                className="object-cover"
+              />
             </div>
           </div>
         </div>
