@@ -33,7 +33,7 @@ export default function Installation() {
             One command to install everything — tmux, Go, npm, and AgentBoard.
           </p>
         </div>
-        <div className="mt-12 max-w-xl mx-auto">
+        <div className="mt-12 max-w-2xl mx-auto">
           <div className="rounded-xl border border-[var(--foreground)]/10 bg-[var(--foreground)] p-6 font-mono text-sm">
             <div className="flex items-center gap-2 mb-4 text-xs text-[var(--muted)]">
               <span>bash</span>
