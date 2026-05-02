@@ -1,8 +1,13 @@
 import Container from '@/components/ui/Container'
 import ThemeSwatch from '@/components/ui/ThemeSwatch'
 import { themes } from '@/lib/themes'
+import { ThemeInfo } from '@/types'
 
-export default function Themes() {
+interface ThemesProps {
+  onSelectTheme?: (theme: ThemeInfo) => void
+}
+
+export default function Themes({ onSelectTheme }: ThemesProps) {
   return (
     <section className="py-20 sm:py-32">
       <Container>
@@ -17,7 +22,7 @@ export default function Themes() {
         </div>
         <div className="mx-auto mt-16 flex flex-wrap justify-center gap-8">
           {themes.map((theme) => (
-            <ThemeSwatch key={theme.name} theme={theme} />
+            <ThemeSwatch key={theme.name} theme={theme} onSelect={onSelectTheme} />
           ))}
         </div>
       </Container>
