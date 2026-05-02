@@ -17,9 +17,9 @@ export default function Nav() {
   return (
     <nav className="sticky top-0 z-50 bg-[var(--background)]/80 backdrop-blur-md">
       <div className="relative">
-        <div className="border-b border-[var(--foreground)]/10 px-8 lg:px-20">
-          <Container>
-            <div className="flex h-16 items-center justify-between">
+        <Container>
+          <div className="border-b border-[var(--foreground)]/10">
+            <div className="flex h-16 items-center justify-between px-16">
               <div className="flex items-center gap-8">
                 <span className="text-xl font-bold">AgentBoard</span>
                 <div className="hidden md:flex items-center gap-6">
@@ -58,7 +58,7 @@ export default function Nav() {
               </div>
             </div>
             {open && (
-              <div className="border-t border-[var(--foreground)]/10 py-4 md:hidden">
+              <div className="border-t border-[var(--foreground)]/10 px-16 py-4 md:hidden">
                 {navLinks.map((link) => (
                   <a
                     key={link.label}
@@ -70,8 +70,8 @@ export default function Nav() {
                 ))}
               </div>
             )}
-          </Container>
-        </div>
+          </div>
+        </Container>
       </div>
     </nav>
   )

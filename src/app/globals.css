@@ -11,6 +11,7 @@
   --accent: #211E1E;
   --secondary: #4B4646;
   --primary: #211E1E;
+  --content-offset: max(80px, calc((100vw - 1280px) / 2));
 }
 
 .dark {
@@ -41,9 +42,9 @@ body::after {
 }
 
 body::before {
-  left: max(80px, calc((100vw - 1280px) / 2));
+  left: var(--content-offset);
 }
 
 body::after {
-  right: max(80px, calc((100vw - 1280px) / 2));
+  right: var(--content-offset);
 }
