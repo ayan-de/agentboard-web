@@ -34,21 +34,21 @@ export default function Installation() {
           </p>
         </div>
         <div className="mt-12 max-w-xl mx-auto">
-          <div className="rounded-xl border border-[var(--foreground)]/10 bg-[#1a1a1a] p-6 font-mono text-sm">
-            <div className="flex items-center gap-2 mb-4 text-xs text-[#656363]">
+          <div className="rounded-xl border border-[var(--foreground)]/10 bg-[var(--foreground)] p-6 font-mono text-sm">
+            <div className="flex items-center gap-2 mb-4 text-xs text-[var(--muted)]">
               <span>bash</span>
             </div>
             <div className="flex items-center justify-between">
-              <code className="text-white">
+              <code className="text-[var(--background)]">
                 $ curl -sSL https://agentboard.ayande.xyz/install.sh | bash
               </code>
               <button
                 onClick={copyToClipboard}
-                className="ml-4 text-[#656363] hover:text-white transition-colors"
+                className="ml-4 text-[var(--muted)] hover:text-[var(--background)] transition-colors"
                 aria-label="Copy command"
               >
                 {copied ? (
-                  <Check className="h-4 w-4 text-green-500" />
+                  <Check className="h-4 w-4 text-[var(--muted)]" />
                 ) : (
                   <Copy className="h-4 w-4" />
                 )}
@@ -56,18 +56,18 @@ export default function Installation() {
             </div>
           </div>
 
-          <div className="mt-8 grid grid-cols-3 gap-4 text-center text-sm text-[var(--muted)]">
-            <div className="rounded-lg border border-[var(--foreground)]/10 bg-[var(--background)] p-4">
-              <div className="text-lg font-semibold text-[var(--foreground)]">5</div>
-              <div>Platforms</div>
+          <div className="mt-12 grid grid-cols-2 gap-8 sm:grid-cols-3 text-center">
+            <div>
+              <div className="text-5xl font-bold text-[var(--foreground)]">150K+</div>
+              <div className="mt-1 text-sm text-[var(--muted)]">Downloads</div>
             </div>
-            <div className="rounded-lg border border-[var(--foreground)]/10 bg-[var(--background)] p-4">
-              <div className="text-lg font-semibold text-[var(--foreground)]">0</div>
-              <div>Config needed</div>
+            <div>
+              <div className="text-5xl font-bold text-[var(--foreground)]">5</div>
+              <div className="mt-1 text-sm text-[var(--muted)]">Platforms</div>
             </div>
-            <div className="rounded-lg border border-[var(--foreground)]/10 bg-[var(--background)] p-4">
-              <div className="text-lg font-semibold text-[var(--foreground)]">~30s</div>
-              <div>Install time</div>
+            <div>
+              <div className="text-5xl font-bold text-[var(--foreground)]">~30s</div>
+              <div className="mt-1 text-sm text-[var(--muted)]">Install Time</div>
             </div>
           </div>
         </div>
