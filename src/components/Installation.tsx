@@ -2,71 +2,74 @@
 
 import { Copy, Check } from 'lucide-react'
 import Container from '@/components/ui/Container'
-import Button from '@/components/ui/Button'
 import { useState } from 'react'
 
 const installCommands = [
   {
-    label: 'Download & Install',
+    label: 'Linux / macOS / Termux',
     command: 'curl -sSL https://agentboard.ayande.xyz/install.sh | bash',
-  },
-  {
-    label: 'Add to PATH',
-    command: 'export PATH="$HOME/.local/bin:$PATH"',
-  },
-  {
-    label: 'Initialize & Run',
-    command: 'agentboard init && agentboard',
   },
 ]
 
 export default function Installation() {
-  const [copied, setCopied] = useState<string | null>(null)
+  const [copied, setCopied] = useState(false)
 
-  const copyToClipboard = async (command: string) => {
-    await navigator.clipboard.writeText(command)
-    setCopied(command)
-    setTimeout(() => setCopied(null), 2000)
+  const copyToClipboard = async () => {
+    await navigator.clipboard.writeText(
+      'curl -sSL https://agentboard.ayande.xyz/install.sh | bash'
+    )
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
   }
 
   return (
-    <section className="py-20 sm:py-32 bg-[var(--background)]/50">
+    <section id="installation" className="py-20 sm:py-32">
       <Container>
-        <div className="mx-auto max-w-2xl text-center">
+        <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Get Started in Minutes
+            Get started in seconds
           </h2>
           <p className="mt-4 text-lg text-[var(--muted)]">
-            Requires Go 1.21+. Everything else is optional.
+            One command to install everything — tmux, Go, npm, and AgentBoard.
           </p>
         </div>
-        <div className="mx-auto mt-16 max-w-2xl space-y-4">
-          {installCommands.map((item) => (
-            <div
-              key={item.label}
-              className="flex flex-col gap-2 rounded-lg border border-[var(--foreground)]/10 bg-[var(--background)] p-4 sm:flex-row sm:items-center sm:justify-between"
-            >
-              <span className="text-sm font-medium text-[var(--muted)]">
-                {item.label}
-              </span>
-              <div className="flex items-center gap-2">
-                <code className="flex-1 rounded bg-[var(--background)] px-3 py-2 font-mono text-sm">
-                  {item.command}
-                </code>
-                <Button
-                  variant="outline"
-                  onClick={() => copyToClipboard(item.command)}
-                  className="gap-1"
-                >
-                  {copied === item.command ? (
-                    <Check className="h-4 w-4 text-[var(--accent)]" />
-                  ) : (
-                    <Copy className="h-4 w-4" />
-                  )}
-                </Button>
-              </div>
+        <div className="mt-12 max-w-xl mx-auto">
+          <div className="rounded-xl border border-[var(--foreground)]/10 bg-[#1a1a1a] p-6 font-mono text-sm">
+            <div className="flex items-center gap-2 mb-4 text-xs text-[#656363]">
+              <span>bash</span>
             </div>
-          ))}
+            <div className="flex items-center justify-between">
+              <code className="text-white">
+                $ curl -sSL https://agentboard.ayande.xyz/install.sh | bash
+              </code>
+              <button
+                onClick={copyToClipboard}
+                className="ml-4 text-[#656363] hover:text-white transition-colors"
+                aria-label="Copy command"
+              >
+                {copied ? (
+                  <Check className="h-4 w-4 text-green-500" />
+                ) : (
+                  <Copy className="h-4 w-4" />
+                )}
+              </button>
+            </div>
+          </div>
+
+          <div className="mt-8 grid grid-cols-3 gap-4 text-center text-sm text-[var(--muted)]">
+            <div className="rounded-lg border border-[var(--foreground)]/10 bg-[var(--background)] p-4">
+              <div className="text-lg font-semibold text-[var(--foreground)]">5</div>
+              <div>Platforms</div>
+            </div>
+            <div className="rounded-lg border border-[var(--foreground)]/10 bg-[var(--background)] p-4">
+              <div className="text-lg font-semibold text-[var(--foreground)]">0</div>
+              <div>Config needed</div>
+            </div>
+            <div className="rounded-lg border border-[var(--foreground)]/10 bg-[var(--background)] p-4">
+              <div className="text-lg font-semibold text-[var(--foreground)]">~30s</div>
+              <div>Install time</div>
+            </div>
+          </div>
         </div>
       </Container>
     </section>
