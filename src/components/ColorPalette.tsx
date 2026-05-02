@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ColorInput from '@/components/ui/ColorInput'
 
 interface ThemeColors {
@@ -19,6 +19,10 @@ interface ColorPaletteProps {
 export default function ColorPalette({ initialColors, onColorsChange }: ColorPaletteProps) {
   const [colors, setColors] = useState<ThemeColors>(initialColors)
   const [copied, setCopied] = useState(false)
+
+  useEffect(() => {
+    setColors(initialColors)
+  }, [initialColors])
 
   const handleChange = (key: keyof ThemeColors, value: string) => {
     const updated = { ...colors, [key]: value }
