@@ -7,16 +7,16 @@ import { useState } from 'react'
 
 const installCommands = [
   {
-    label: 'Clone Repository',
-    command: 'git clone https://github.com/ayan-de/agent-board.git',
+    label: 'Download & Install',
+    command: 'curl -sSL https://raw.githubusercontent.com/ayan-de/agent-board/main/install.sh | bash',
   },
   {
-    label: 'Build Binary',
-    command: 'cd agent-board && go build -o agentboard ./cmd/agentboard',
+    label: 'Add to PATH',
+    command: 'export PATH="$HOME/.local/bin:$PATH"',
   },
   {
     label: 'Initialize & Run',
-    command: './agentboard init && ./agentboard',
+    command: 'agentboard init && agentboard',
   },
 ]
 
