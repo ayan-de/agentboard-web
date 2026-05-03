@@ -1,5 +1,6 @@
 import { Github, Twitter } from 'lucide-react'
 import Container from '@/components/ui/Container'
+import Separator from './ui/Separator'
 
 export default function Footer() {
   return (
@@ -43,9 +44,6 @@ export default function Footer() {
                 </a>
               </div>
             </div>
-          </div>
-          <div className="mt-8 text-center text-sm text-[var(--muted)]">
-            MIT License · 2025
           </div>
         </Container>
       </div>
