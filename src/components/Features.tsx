@@ -51,7 +51,7 @@ const featureGrid = [
 export default function Features() {
   return (
     <LineBorder>
-    <section id="features" className="py-20 sm:py-32 bg-[var(--background)]/50">
+    <section id="features" className="pb-20 sm:pb-32 bg-[var(--background)]/50">
       <Container>
         <div className="mx-auto max-w-3xl text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
