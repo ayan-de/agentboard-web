@@ -1,7 +1,9 @@
 import Container from '@/components/ui/Container'
+import LineBorder from '@/components/ui/LineBorder'
 
 export default function Waitlist() {
   return (
+    <LineBorder>
     <section>
       <div className="px-4">
         <Container>
@@ -26,5 +28,6 @@ export default function Waitlist() {
         </Container>
       </div>
     </section>
+    </LineBorder>
   )
 }

@@ -1,5 +1,6 @@
 import { Book, Keyboard, Palette, Cpu, GitBranch, Heart } from 'lucide-react'
 import Container from '@/components/ui/Container'
+import LineBorder from '@/components/ui/LineBorder'
 
 const docs = [
   {
@@ -42,6 +43,7 @@ const docs = [
 
 export default function Documentation() {
   return (
+    <LineBorder>
     <section className="py-20 sm:py-32">
       <Container>
         <div className="mx-auto max-w-2xl text-center">
@@ -73,5 +75,6 @@ export default function Documentation() {
         </div>
       </Container>
     </section>
+    </LineBorder>
   )
 }

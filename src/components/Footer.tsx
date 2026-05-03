@@ -1,9 +1,11 @@
 import { Github, Twitter } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import Separator from './ui/Separator'
+import LineBorder from '@/components/ui/LineBorder'
 
 export default function Footer() {
   return (
+    <LineBorder>
     <footer className="py-12">
       <div className="px-4">
         <Container>
@@ -48,5 +50,6 @@ export default function Footer() {
         </Container>
       </div>
     </footer>
+    </LineBorder>
   )
 }

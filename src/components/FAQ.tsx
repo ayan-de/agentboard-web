@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
 import Container from '@/components/ui/Container'
+import LineBorder from '@/components/ui/LineBorder'
 
 const faqs = [
   {
@@ -36,6 +37,7 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
+    <LineBorder>
     <section id="faq" className="py-20 sm:py-32">
       <Container>
         <div className="mx-auto max-w-3xl text-center">
@@ -71,5 +73,6 @@ export default function FAQ() {
         </div>
       </Container>
     </section>
+    </LineBorder>
   )
 }

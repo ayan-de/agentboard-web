@@ -4,6 +4,7 @@ import { Github, Menu, X, Download } from 'lucide-react'
 import { useState } from 'react'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
+import LineBorder from '@/components/ui/LineBorder'
 import { logo } from './logo'
 
 const navLinks = [
@@ -16,6 +17,7 @@ export default function Nav() {
   const [open, setOpen] = useState(false)
 
   return (
+    <LineBorder>
     <nav className="sticky top-0 z-50 bg-[var(--background)]/80 backdrop-blur-md">
       <div className="relative">
         <Container>
@@ -82,5 +84,6 @@ export default function Nav() {
         </Container>
       </div>
     </nav>
+    </LineBorder>
   )
 }

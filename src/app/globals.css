@@ -28,23 +28,3 @@ body {
   color: var(--foreground);
   font-family: 'JetBrains Mono', Consolas, monospace;
 }
-
-body::before,
-body::after {
-  content: '';
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background-color: var(--foreground);
-  opacity: 0.4;
-  z-index: 100;
-}
-
-body::before {
-  left: var(--content-offset);
-}
-
-body::after {
-  right: var(--content-offset);
-}

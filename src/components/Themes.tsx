@@ -2,6 +2,7 @@ import Container from '@/components/ui/Container'
 import ThemeSwatch from '@/components/ui/ThemeSwatch'
 import { themes } from '@/lib/themes'
 import { ThemeInfo } from '@/types'
+import LineBorder from '@/components/ui/LineBorder'
 
 interface ThemesProps {
   onSelectTheme?: (theme: ThemeInfo) => void
@@ -9,6 +10,7 @@ interface ThemesProps {
 
 export default function Themes({ onSelectTheme }: ThemesProps) {
   return (
+    <LineBorder>
     <section className="py-20 sm:py-32">
       <Container>
         <div className="mx-auto max-w-2xl text-center">
@@ -27,5 +29,6 @@ export default function Themes({ onSelectTheme }: ThemesProps) {
         </div>
       </Container>
     </section>
+    </LineBorder>
   )
 }

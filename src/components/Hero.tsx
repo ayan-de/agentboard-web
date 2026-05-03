@@ -3,9 +3,11 @@ import { Terminal, Download } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import Announcement from '@/components/ui/Announcement'
+import LineBorder from '@/components/ui/LineBorder'
 
 export default function Hero() {
   return (
+    <LineBorder>
     <section className="relative overflow-hidden py-24 sm:py-32">
       <Container>
         <div className="mx-auto max-w-3xl text-center">
@@ -59,5 +61,6 @@ export default function Hero() {
         </div>
       </Container>
     </section>
+    </LineBorder>
   )
 }

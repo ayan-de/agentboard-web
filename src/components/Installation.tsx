@@ -2,6 +2,7 @@
 
 import { Copy, Check, Terminal } from 'lucide-react'
 import Container from '@/components/ui/Container'
+import LineBorder from '@/components/ui/LineBorder'
 import { useState } from 'react'
 
 const installCommands = [
@@ -25,6 +26,7 @@ export default function Installation() {
   }
 
   return (
+    <LineBorder>
     <section id="installation" className="py-20 sm:py-32">
       <Container>
         <div className="mx-auto max-w-3xl text-center">
@@ -91,5 +93,6 @@ export default function Installation() {
         </div>
       </Container>
     </section>
+    </LineBorder>
   )
 }

@@ -8,6 +8,7 @@ import {
   Check,
 } from 'lucide-react'
 import Container from '@/components/ui/Container'
+import LineBorder from '@/components/ui/LineBorder'
 
 const stats = [
   { value: '150K+', label: 'Downloads' },
@@ -49,6 +50,7 @@ const featureGrid = [
 
 export default function Features() {
   return (
+    <LineBorder>
     <section id="features" className="py-20 sm:py-32 bg-[var(--background)]/50">
       <Container>
         <div className="mx-auto max-w-3xl text-center">
@@ -96,5 +98,6 @@ export default function Features() {
           </div>
       </Container>
     </section>
+    </LineBorder>
   )
 }

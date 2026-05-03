@@ -1,5 +1,6 @@
 import { Github } from 'lucide-react'
 import Container from '@/components/ui/Container'
+import LineBorder from '@/components/ui/LineBorder'
 
 const links = [
   { label: 'GitHub', sublabel: '1K', href: 'https://github.com/ayan-de/agent-board' },
@@ -11,6 +12,7 @@ const links = [
 
 export default function SocialLinks() {
   return (
+    <LineBorder>
     <section className="py-8">
       <Container>
         <div className="flex items-center justify-center h-12 gap-16">
@@ -38,5 +40,6 @@ export default function SocialLinks() {
         </div>
       </Container>
     </section>
+    </LineBorder>
   )
 }
