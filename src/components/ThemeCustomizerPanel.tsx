@@ -28,7 +28,7 @@ export default function ThemeCustomizerPanel({
           />
 
           <div
-            className={`fixed right-0 top-0 z-[120] h-full w-80 transform overflow-y-auto bg-[var(--background)] shadow-xl transition-transform duration-300 ${isOpen ? 'translate-x-0' : 'translate-x-full'
+            className={`fixed right-0 top-0 z-[1200] h-full w-80 transform overflow-y-auto bg-[var(--background)] shadow-xl transition-transform duration-300 ${isOpen ? 'translate-x-0' : 'translate-x-full'
               }`}
           >
             <div className="flex items-center justify-between border-b border-[var(--foreground)]/10 p-3.5">
