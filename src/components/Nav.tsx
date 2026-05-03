@@ -4,6 +4,7 @@ import { Github, Menu, X, Download } from 'lucide-react'
 import { useState } from 'react'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
+import { logo } from './logo'
 
 const navLinks = [
   { label: 'Features', href: '#features' },
@@ -19,9 +20,16 @@ export default function Nav() {
       <div className="relative">
         <Container>
           <div className="border-b border-[var(--foreground)]/10">
-            <div className="flex h-16 items-center justify-between px-16">
+            <div className="flex h-16 items-center justify-between px-4">
               <div className="flex items-center gap-8">
-                <span className="text-xl font-bold">AgentBoard</span>
+                <a href="/" className="flex flex-col font-mono text-[10px] leading-none select-none group transition-all duration-300 hover:opacity-80">
+                  {logo.left.map((line, i) => (
+                    <div key={i} className="flex whitespace-pre">
+                      <span className="text-[var(--foreground)] group-hover:text-[var(--primary)] transition-colors duration-300">{line}</span>
+                      <span className="text-[var(--muted)] group-hover:text-[var(--foreground)] transition-colors duration-300">{logo.right[i]}</span>
+                    </div>
+                  ))}
+                </a>
                 <div className="hidden md:flex items-center gap-6">
                   {navLinks.map((link) => (
                     <a
@@ -58,7 +66,7 @@ export default function Nav() {
               </div>
             </div>
             {open && (
-              <div className="border-t border-[var(--foreground)]/10 px-16 py-4 md:hidden">
+              <div className="border-t border-[var(--foreground)]/10 px-4 py-4 md:hidden">
                 {navLinks.map((link) => (
                   <a
                     key={link.label}
