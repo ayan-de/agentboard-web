@@ -13,7 +13,7 @@ export default function ColorInput({ label, value, onChange }: ColorInputProps) 
         type="color"
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="h-10 w-10 cursor-pointer rounded-lg border border-[var(--foreground)]/20 p-1"
+        className="h-10 w-10 cursor-pointer rounded-sm border border-[var(--foreground)]/20 p-1"
       />
       <div className="flex flex-col">
         <label className="text-sm font-medium text-[var(--foreground)]">

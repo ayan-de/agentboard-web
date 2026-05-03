@@ -36,7 +36,7 @@ export default function Installation() {
           </p>
         </div>
         <div className="mt-12 max-w-2xl mx-auto">
-          <div className="rounded-md border border-[var(--foreground)]/10 bg-[var(--background)] overflow-hidden">
+          <div className="rounded-sm border border-[var(--foreground)]/10 bg-[var(--background)] overflow-hidden">
             <div className="flex items-center border-b border-[var(--foreground)]/10">
               <div className="flex items-center px-4 py-3 border-r border-[var(--foreground)]/10">
                 <Terminal className="h-4 w-4 text-[var(--muted)]" />
