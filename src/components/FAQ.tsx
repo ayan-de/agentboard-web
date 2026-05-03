@@ -51,21 +51,20 @@ export default function FAQ() {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="rounded-xl border border-[var(--foreground)]/10 bg-[var(--background)]"
+              className="rounded-sm border border-[var(--foreground)]/10 bg-[var(--background)]"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 className="flex w-full items-center justify-between p-6 text-left"
               >
-                <span className="font-medium text-[var(--foreground)]">{faq.question}</span>
+                <span className="font-xl text-[var(--foreground)]">{faq.question}</span>
                 <ChevronDown
-                  className={`h-5 w-5 text-[var(--muted)] transition-transform ${
-                    openIndex === index ? 'rotate-180' : ''
-                  }`}
+                  className={`h-5 w-5 text-[var(--muted)] transition-transform ${openIndex === index ? 'rotate-180' : ''
+                    }`}
                 />
               </button>
               {openIndex === index && (
-                <div className="px-6 pb-6 text-sm text-[var(--muted)]">{faq.answer}</div>
+                <div className="px-6 pb-6 text-lg text-[var(--muted)]">{faq.answer}</div>
               )}
             </div>
           ))}

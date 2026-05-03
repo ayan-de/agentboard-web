@@ -73,14 +73,14 @@ export default function Features() {
           {featureGrid.map((f) => (
             <div
               key={f.title}
-              className="flex items-start gap-4 rounded-xl border border-[var(--foreground)]/10 bg-[var(--background)] p-6"
+              className="flex items-start gap-4 rounded-sm border border-[var(--foreground)]/10 bg-[var(--background)] p-6"
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--foreground)]/5 shrink-0">
+              <div className="flex h-10 w-10 items-center justify-center rounded-sm bg-[var(--foreground)]/5 shrink-0">
                 <f.icon className="h-5 w-5 text-[var(--foreground)]" />
               </div>
               <div>
-                <h3 className="font-semibold">{f.title}</h3>
-                <p className="mt-1 text-sm text-[var(--muted)]">{f.description}</p>
+                <h3 className="font-semibold text-xl">{f.title}</h3>
+                <p className="mt-1 text-lg text-[var(--muted)]">{f.description}</p>
               </div>
             </div>
           ))}
@@ -88,7 +88,7 @@ export default function Features() {
 
         <div className="mt-16 max-w-2xl mx-auto space-y-3">
           {features.map((f) => (
-            <div key={f.text} className="flex items-center gap-3 text-sm">
+            <div key={f.text} className="flex items-center gap-3 text-xl">
               <Check className="h-4 w-4 text-[var(--foreground)] shrink-0" />
               <span>{f.text}</span>
             </div>
