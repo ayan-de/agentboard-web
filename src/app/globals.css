@@ -5,7 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-  --background: #F1ECEC;
+  --background: #000000;
   --foreground: #211E1E;
   --muted: #4B4646;
   --accent: #211E1E;
@@ -15,7 +15,7 @@
 }
 
 .dark {
-  --background: #211E1E;
+  --background: #000000;
   --foreground: #F1ECEC;
   --muted: #9A9595;
   --accent: #F1ECEC;
