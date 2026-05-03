@@ -14,6 +14,9 @@ export const metadata: Metadata = {
       'A premium, terminal-based Kanban board for orchestrating and managing AI coding agents.',
     type: 'website',
   },
+  icons: {
+    icon: '/logo.svg',
+  },
 }
 
 export default function RootLayout({
