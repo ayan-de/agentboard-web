@@ -33,7 +33,7 @@ export default function Hero() {
         </div>
 
         <div className="mt-16 relative">
-          <div className="relative rounded-xl border border-[var(--foreground)]/10 bg-[var(--background)]/50 p-2 shadow-2xl max-w-3xl mx-auto">
+          <div className="relative border border-[var(--foreground)]/10 bg-[var(--background)]/50 p-2 shadow-2xl">
             <div className="flex items-center gap-2 border-b border-[var(--foreground)]/10 px-4 py-2">
               <div className="flex gap-1.5">
                 <div className="h-3 w-3 rounded-full bg-red-500/80" />
@@ -45,7 +45,7 @@ export default function Hero() {
                 agentboard
               </div>
             </div>
-            <div className="relative aspect-video overflow-hidden rounded-lg bg-[var(--background)]">
+            <div className="relative aspect-video overflow-hidden bg-[var(--background)]">
               <Image
                 src="/image.png"
                 alt="AgentBoard TUI Preview"
