@@ -13,6 +13,7 @@ import SocialLinks from '@/components/SocialLinks'
 import ThemeCustomizer from '@/components/ThemeCustomizer'
 import { useThemeColors } from '@/lib/ThemeContext'
 import { ThemeInfo } from '@/types'
+import MadeBy from '@/components/MadeBy'
 
 export default function Home() {
   const { setColors } = useThemeColors()
@@ -48,6 +49,7 @@ export default function Home() {
         <Separator />
         <SocialLinks />
         <Separator />
+        <MadeBy />
       </main>
       <ThemeCustomizer />
     </>
