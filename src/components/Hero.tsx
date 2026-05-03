@@ -2,12 +2,14 @@ import Image from 'next/image'
 import { Terminal, Download } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
+import Announcement from '@/components/ui/Announcement'
 
 export default function Hero() {
   return (
     <section className="relative overflow-hidden py-24 sm:py-32">
       <Container>
         <div className="mx-auto max-w-3xl text-center">
+          <Announcement />
           <h1 className="text-3xl font-bold tracking-tight sm:text-5xl">
             The terminal-based Kanban board for AI agents
           </h1>
