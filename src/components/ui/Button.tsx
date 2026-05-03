@@ -21,13 +21,13 @@ export default function Button({
   onClick,
 }: ButtonProps) {
   const baseStyles =
-    'inline-flex items-center justify-center rounded-lg px-6 py-3 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none'
+    'inline-flex items-center justify-center rounded-sm px-4 py-2 text-base font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none'
 
   const variants = {
     primary:
-      'bg-[var(--accent)] text-white hover:opacity-90 dark:bg-[var(--accent)] dark:text-[var(--background)]',
+      'bg-[var(--foreground)] text-[var(--background)] hover:opacity-80',
     secondary:
-      'bg-[var(--secondary)] text-white hover:opacity-90 dark:bg-[var(--secondary)] dark:text-white',
+      'bg-[var(--muted)] text-[var(--background)] hover:opacity-80',
     outline:
       'border border-[var(--foreground)]/20 hover:bg-[var(--foreground)]/5',
   }

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ColorInput from '@/components/ui/ColorInput'
 
 interface ThemeColors {
@@ -8,7 +8,17 @@ interface ThemeColors {
   primary: string
   secondary: string
   accent: string
+  error: string
+  warning: string
+  success: string
+  info: string
+  text: string
+  textMuted: string
   background: string
+  backgroundPanel: string
+  backgroundElement: string
+  border: string
+  borderActive: string
 }
 
 interface ColorPaletteProps {
@@ -20,6 +30,10 @@ export default function ColorPalette({ initialColors, onColorsChange }: ColorPal
   const [colors, setColors] = useState<ThemeColors>(initialColors)
   const [copied, setCopied] = useState(false)
 
+  useEffect(() => {
+    setColors(initialColors)
+  }, [initialColors])
+
   const handleChange = (key: keyof ThemeColors, value: string) => {
     const updated = { ...colors, [key]: value }
     setColors(updated)
@@ -28,13 +42,27 @@ export default function ColorPalette({ initialColors, onColorsChange }: ColorPal
 
   const generateJSON = () => {
     return JSON.stringify({
+      $schema: "https://agentboard.dev/theme.json",
       name: colors.name,
-      defs: {},
-      theme: {
-        primary: colors.primary,
-        secondary: colors.secondary,
-        accent: colors.accent,
+      defs: {
         background: colors.background,
+        foreground: colors.text,
+      },
+      theme: {
+        primary: { dark: colors.primary, light: colors.primary },
+        secondary: { dark: colors.secondary, light: colors.secondary },
+        accent: { dark: colors.accent, light: colors.accent },
+        error: { dark: colors.error, light: colors.error },
+        warning: { dark: colors.warning, light: colors.warning },
+        success: { dark: colors.success, light: colors.success },
+        info: { dark: colors.info, light: colors.info },
+        text: { dark: "foreground", light: "background" },
+        textMuted: { dark: colors.textMuted, light: colors.textMuted },
+        background: { dark: "background", light: "foreground" },
+        backgroundPanel: { dark: colors.backgroundPanel, light: colors.backgroundElement },
+        backgroundElement: { dark: colors.backgroundElement, light: colors.textMuted },
+        border: { dark: colors.border, light: colors.border },
+        borderActive: { dark: colors.borderActive, light: colors.textMuted },
       },
     }, null, 2)
   }
@@ -65,9 +93,59 @@ export default function ColorPalette({ initialColors, onColorsChange }: ColorPal
           onChange={(v) => handleChange('accent', v)}
         />
         <ColorInput
+          label="Error"
+          value={colors.error}
+          onChange={(v) => handleChange('error', v)}
+        />
+        <ColorInput
+          label="Warning"
+          value={colors.warning}
+          onChange={(v) => handleChange('warning', v)}
+        />
+        <ColorInput
+          label="Success"
+          value={colors.success}
+          onChange={(v) => handleChange('success', v)}
+        />
+        <ColorInput
+          label="Info"
+          value={colors.info}
+          onChange={(v) => handleChange('info', v)}
+        />
+        <ColorInput
+          label="Text"
+          value={colors.text}
+          onChange={(v) => handleChange('text', v)}
+        />
+        <ColorInput
+          label="Text Muted"
+          value={colors.textMuted}
+          onChange={(v) => handleChange('textMuted', v)}
+        />
+        <ColorInput
           label="Background"
           value={colors.background}
           onChange={(v) => handleChange('background', v)}
+        />
+        <ColorInput
+          label="Background Panel"
+          value={colors.backgroundPanel}
+          onChange={(v) => handleChange('backgroundPanel', v)}
+        />
+        <ColorInput
+          label="Background Element"
+          value={colors.backgroundElement}
+          onChange={(v) => handleChange('backgroundElement', v)}
+        />
+        <ColorInput
+          label="Border"
+          value={colors.border}
+          onChange={(v) => handleChange('border', v)}
+        />
+        <ColorInput
+          label="Border Active"
+          value={colors.borderActive}
+          onChange={(v) => handleChange('borderActive', v)}
         />
       </div>
 

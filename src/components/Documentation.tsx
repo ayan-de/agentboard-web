@@ -57,14 +57,14 @@ export default function Documentation() {
             <a
               key={doc.title}
               href={doc.href}
-              className="flex items-start gap-4 rounded-xl border border-[var(--foreground)]/10 bg-[var(--background)] p-6 transition-colors hover:border-[var(--accent)]/50 hover:bg-[var(--accent)]/5"
+              className="flex items-start gap-4 rounded-sm border border-[var(--foreground)]/10 bg-[var(--background)] p-6 transition-colors hover:border-[var(--accent)]/50 hover:bg-[var(--accent)]/5"
             >
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--accent)]/10">
                 <doc.icon className="h-5 w-5 text-[var(--accent)]" />
               </div>
               <div>
-                <h3 className="font-semibold">{doc.title}</h3>
-                <p className="mt-1 text-sm text-[var(--muted)]">
+                <h3 className="font-semibold text-xl">{doc.title}</h3>
+                <p className="mt-1 text-lg text-[var(--muted)]">
                   {doc.description}
                 </p>
               </div>

@@ -1,4 +1,5 @@
-import { Terminal } from 'lucide-react'
+import Image from 'next/image'
+import { Terminal, Download } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 
@@ -7,7 +8,7 @@ export default function Hero() {
     <section className="relative overflow-hidden py-24 sm:py-32">
       <Container>
         <div className="mx-auto max-w-3xl text-center">
-          <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
+          <h1 className="text-3xl font-bold tracking-tight sm:text-5xl">
             The terminal-based Kanban board for AI agents
           </h1>
           <p className="mt-6 text-lg leading-8 text-[var(--muted)]">
@@ -18,6 +19,7 @@ export default function Hero() {
 
           <div className="mt-10 flex items-center justify-center gap-4">
             <Button variant="primary" href="#installation">
+              <Download className="h-4 w-4 mr-2" />
               Download
             </Button>
             <Button
@@ -31,7 +33,7 @@ export default function Hero() {
         </div>
 
         <div className="mt-16 relative">
-          <div className="relative rounded-xl border border-[var(--foreground)]/10 bg-[var(--background)]/50 p-2 shadow-2xl max-w-3xl mx-auto">
+          <div className="relative border border-[var(--foreground)]/10 bg-[var(--background)]/50 p-2 shadow-2xl">
             <div className="flex items-center gap-2 border-b border-[var(--foreground)]/10 px-4 py-2">
               <div className="flex gap-1.5">
                 <div className="h-3 w-3 rounded-full bg-red-500/80" />
@@ -43,10 +45,13 @@ export default function Hero() {
                 agentboard
               </div>
             </div>
-            <div className="relative aspect-video overflow-hidden rounded-lg bg-[var(--background)]">
-              <div className="absolute inset-0 flex items-center justify-center text-[var(--muted)]">
-                TUI preview placeholder
-              </div>
+            <div className="relative aspect-video overflow-hidden bg-[var(--background)]">
+              <Image
+                src="/image.png"
+                alt="AgentBoard TUI Preview"
+                fill
+                className="object-cover"
+              />
             </div>
           </div>
         </div>
