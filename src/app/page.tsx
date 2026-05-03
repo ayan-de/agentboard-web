@@ -9,6 +9,7 @@ import Documentation from '@/components/Documentation'
 import FAQ from '@/components/FAQ'
 import Waitlist from '@/components/Waitlist'
 import Footer from '@/components/Footer'
+import SocialLinks from '@/components/SocialLinks'
 import ThemeCustomizer from '@/components/ThemeCustomizer'
 import { useThemeColors } from '@/lib/ThemeContext'
 import { ThemeInfo } from '@/types'
@@ -31,7 +32,6 @@ export default function Home() {
     <>
       <main>
         <Hero />
-        {/* <Separator /> */}
         <Features />
         <Separator />
         <Themes onSelectTheme={handleSelectTheme} />
@@ -45,6 +45,9 @@ export default function Home() {
         <Waitlist />
         <Separator />
         <Footer />
+        <Separator />
+        <SocialLinks />
+        <Separator />
       </main>
       <ThemeCustomizer />
     </>
