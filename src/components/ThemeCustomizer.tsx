@@ -24,7 +24,7 @@ export default function ThemeCustomizer() {
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-30 flex h-14 w-14 items-center justify-center rounded-xl bg-[var(--foreground)] text-[var(--background)] shadow-lg hover:opacity-80"
+        className="fixed bottom-6 right-24 z-30 flex h-12 w-12 items-center justify-center rounded-sm bg-[var(--foreground)] text-[var(--background)] shadow-lg hover:opacity-80"
         aria-label="Open theme customizer"
       >
         <Plus className="h-6 w-6" />
