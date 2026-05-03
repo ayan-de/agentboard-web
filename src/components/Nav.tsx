@@ -52,7 +52,7 @@ export default function Nav() {
                   <Github className="h-4 w-4" />
                   Star on GitHub
                 </a>
-                <Button variant="primary" size="sm" href="#installation">
+                <Button variant="primary" href="#installation">
                   <Download className="h-4 w-4 mr-2" />
                   Download
                 </Button>
