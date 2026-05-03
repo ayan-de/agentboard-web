@@ -2,26 +2,13 @@
 
 import { X } from 'lucide-react'
 import ColorPalette from '@/components/ColorPalette'
+import { ThemeInfo } from '@/types'
 
 interface ThemeCustomizerPanelProps {
   isOpen: boolean
   onClose: () => void
-  colors: {
-    name: string
-    primary: string
-    secondary: string
-    accent: string
-    background: string
-  }
-  onColorsChange: (colors: typeof initialColors) => void
-}
-
-const initialColors = {
-  name: 'custom',
-  primary: '#fab283',
-  secondary: '#5c9cf5',
-  accent: '#9d7cd8',
-  background: '#0a0a0a',
+  colors: ThemeInfo
+  onColorsChange: (colors: ThemeInfo) => void
 }
 
 export default function ThemeCustomizerPanel({

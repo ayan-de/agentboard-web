@@ -9,11 +9,12 @@ import FAQ from '@/components/FAQ'
 import Footer from '@/components/Footer'
 import ThemeCustomizer from '@/components/ThemeCustomizer'
 import { useThemeColors } from '@/lib/ThemeContext'
+import { ThemeInfo } from '@/types'
 
 export default function Home() {
   const { setColors } = useThemeColors()
 
-  const handleSelectTheme = (theme: { name: string; primary: string; secondary: string; accent: string; background: string }) => {
+  const handleSelectTheme = (theme: ThemeInfo) => {
     setColors(theme)
     if (typeof document !== 'undefined') {
       const root = document.documentElement

@@ -4,24 +4,28 @@ import { createContext, useContext, useState, ReactNode } from 'react'
 import { ThemeInfo } from '@/types'
 
 interface ThemeContextValue {
-  colors: {
-    name: string
-    primary: string
-    secondary: string
-    accent: string
-    background: string
-  }
-  setColors: (colors: ThemeContextValue['colors']) => void
+  colors: ThemeInfo
+  setColors: (colors: ThemeInfo) => void
 }
 
 const ThemeContext = createContext<ThemeContextValue | null>(null)
 
 const defaultColors = {
-  name: 'custom',
-  primary: '#fab283',
-  secondary: '#5c9cf5',
-  accent: '#9d7cd8',
-  background: '#0a0a0a',
+  name: 'default',
+  primary: '#ffffff',
+  secondary: '#888888',
+  accent: '#ffffff',
+  error: '#ffffff',
+  warning: '#ffffff',
+  success: '#ffffff',
+  info: '#888888',
+  text: '#ffffff',
+  textMuted: '#888888',
+  background: '#000000',
+  backgroundPanel: '#111111',
+  backgroundElement: '#333333',
+  border: '#333333',
+  borderActive: '#ffffff',
 }
 
 export function ThemeContextProvider({ children }: { children: ReactNode }) {
