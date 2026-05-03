@@ -151,7 +151,7 @@ export default function ColorPalette({ initialColors, onColorsChange }: ColorPal
 
       <button
         onClick={handleCopy}
-        className="rounded-lg bg-[var(--accent)] px-4 py-2 text-sm font-medium text-white hover:opacity-90"
+        className="rounded-sm bg-[var(--accent)] px-4 py-2 text-sm font-medium text-black hover:opacity-90"
       >
         {copied ? 'Copied!' : 'Copy JSON'}
       </button>
