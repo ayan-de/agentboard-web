@@ -2,6 +2,13 @@ import { ThemeInfo } from '@/types'
 
 export const themes: ThemeInfo[] = [
   {
+    name: 'default',
+    primary: '#ffffff',
+    secondary: '#888888',
+    accent: '#ffffff',
+    background: '#000000',
+  },
+  {
     name: 'agentboard',
     primary: '#fab283',
     secondary: '#5c9cf5',
