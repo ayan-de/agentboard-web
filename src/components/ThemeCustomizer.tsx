@@ -1,6 +1,6 @@
 'use client'
 
-import { Plus } from 'lucide-react'
+import { Plus, ArrowLeft } from 'lucide-react'
 import { useState } from 'react'
 import ThemeCustomizerPanel from '@/components/ThemeCustomizerPanel'
 import { useThemeColors } from '@/lib/ThemeContext'
@@ -22,13 +22,19 @@ export default function ThemeCustomizer() {
 
   return (
     <>
-      <button
-        onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-24 z-30 flex h-12 w-12 items-center justify-center rounded-sm bg-[var(--foreground)] text-[var(--background)] shadow-lg hover:opacity-80"
-        aria-label="Open theme customizer"
-      >
-        <Plus className="h-6 w-6" />
-      </button>
+      <div className="fixed bottom-6 right-24 z-30 flex items-center gap-3">
+        <div className="flex items-center gap-2 rounded-sm border border-[var(--foreground)]/10 bg-[var(--background)] px-3 py-1.5 shadow-md">
+          <span className="text-sm text-[var(--muted)]">Create your theme</span>
+          <ArrowLeft className="h-4 w-4 rotate-180 text-[var(--muted)]" />
+        </div>
+        <button
+          onClick={() => setIsOpen(true)}
+          className="flex h-12 w-12 items-center justify-center rounded-sm bg-[var(--foreground)] text-[var(--background)] shadow-lg hover:opacity-80"
+          aria-label="Open theme customizer"
+        >
+          <Plus className="h-6 w-6" />
+        </button>
+      </div>
 
       <ThemeCustomizerPanel
         isOpen={isOpen}
