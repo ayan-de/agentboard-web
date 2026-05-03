@@ -1,11 +1,13 @@
 'use client'
 
 import Hero from '@/components/Hero'
+import Separator from '@/components/ui/Separator'
 import Features from '@/components/Features'
 import Themes from '@/components/Themes'
 import Installation from '@/components/Installation'
 import Documentation from '@/components/Documentation'
 import FAQ from '@/components/FAQ'
+import Waitlist from '@/components/Waitlist'
 import Footer from '@/components/Footer'
 import ThemeCustomizer from '@/components/ThemeCustomizer'
 import { useThemeColors } from '@/lib/ThemeContext'
@@ -29,11 +31,19 @@ export default function Home() {
     <>
       <main>
         <Hero />
+        {/* <Separator /> */}
         <Features />
+        <Separator />
         <Themes onSelectTheme={handleSelectTheme} />
+        <Separator />
         <Installation />
+        <Separator />
         <Documentation />
+        <Separator />
         <FAQ />
+        <Separator />
+        <Waitlist />
+        <Separator />
         <Footer />
       </main>
       <ThemeCustomizer />
