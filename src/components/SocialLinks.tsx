@@ -13,12 +13,16 @@ const links = [
 export default function SocialLinks() {
   return (
     <LineBorder>
-    <section className="py-8">
-      <Container>
-        <div className="flex items-center justify-center h-12 gap-16">
-          {links.map((link, index) => (
-            <>
-              <div key={link.label} className="flex items-center gap-2">
+      <section>
+        <Container>
+          <div className="flex items-stretch h-20">
+            {links.map((link, index) => (
+              <div 
+                key={link.label} 
+                className={`flex-1 flex items-center justify-center gap-2 ${
+                  index < links.length - 1 ? 'border-r border-[var(--foreground)]/40' : ''
+                }`}
+              >
                 {link.label === 'GitHub' ? (
                   <Github className="h-4 w-4 text-[var(--muted)]" />
                 ) : null}
@@ -32,14 +36,10 @@ export default function SocialLinks() {
                   <span className="text-xs text-[var(--muted)]/60">[{link.sublabel}]</span>
                 )}
               </div>
-              {index < links.length - 1 && (
-                <span className="h-full w-px bg-[var(--muted)]" />
-              )}
-            </>
-          ))}
-        </div>
-      </Container>
-    </section>
+            ))}
+          </div>
+        </Container>
+      </section>
     </LineBorder>
   )
 }
