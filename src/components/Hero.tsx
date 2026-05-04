@@ -37,7 +37,7 @@ export default function Hero() {
         </div>
 
         <div className="mt-16 relative">
-          <div className="relative border border-[var(--foreground)]/10 bg-[var(--background)]/50 p-2 shadow-2xl">
+          <div className="relative border border-[var(--foreground)]/10 bg-[var(--background)]/50 shadow-2xl">
             <div className="flex items-center gap-2 border-b border-[var(--foreground)]/10 px-4 py-2">
               <div className="flex gap-1.5">
                 <div className="h-3 w-3 rounded-full bg-red-500/80" />
