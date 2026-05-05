@@ -170,7 +170,12 @@ function TerminalWindow({ columns, className = '' }: TerminalWindowProps) {
       <div className="relative aspect-video overflow-hidden p-3 bg-[var(--background)]">
         <KanbanBoard columns={columns} selectedIndex={selectedIndex} onColumnClick={setSelectedIndex} />
       </div>
-      <TerminalModal isOpen={true} title="Success" message="Your changes have been saved" variant="success" />
+      <div className="absolute bottom-4 right-4 z-50 flex flex-col gap-2">
+        <TerminalModal isOpen={true} title="Error" message="Failed to connect to server" variant="error" />
+        <TerminalModal isOpen={true} title="Warning" message="Low disk space" variant="warning" />
+        <TerminalModal isOpen={true} title="Success" message="Your changes have been saved" variant="success" />
+        <TerminalModal isOpen={true} title="Info" message="2 updates available" variant="info" />
+      </div>
     </div>
   )
 }

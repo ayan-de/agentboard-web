@@ -29,16 +29,13 @@ export default function TerminalModal({
   }[variant]
 
   return (
-    <div className="absolute bottom-4 right-4 z-50">
-      <div
-        className="w-64 rounded-sm border-2 bg-[var(--background)] p-2 text-xs"
-        style={{ borderColor, color: borderColor }}
-      >
-        <h3 className="text-base font-semibold leading-tight">{title}</h3>
-        {message && (
-          <p className="mt-0.5 text-xs text-[var(--muted)] leading-tight">{message}</p>
-        )}
-      </div>
+    <div className="rounded-sm border-2 bg-[var(--background)] p-2 text-xs"
+      style={{ borderColor, color: borderColor }}
+    >
+      <h3 className="text-base font-semibold leading-tight">{title}</h3>
+      {message && (
+        <p className="mt-0.5 text-xs text-[var(--muted)] leading-tight">{message}</p>
+      )}
     </div>
   )
 }
