@@ -41,13 +41,15 @@ function TerminalWindow({ columns, className = '' }: TerminalWindowProps) {
   return (
     <div className={`relative border border-[var(--border)] bg-[var(--background)] shadow-2xl ${className}`}>
       <TerminalHeader />
-      <div className="relative aspect-video overflow-hidden p-3 bg-[var(--background)]">
+      <div className="relative flex flex-col gap-3 aspect-video overflow-hidden p-3 bg-[var(--background)]">
         <TabBar tabs={tabs} selectedIndex={selectedTabIndex} onTabClick={setSelectedTabIndex} />
-        {selectedTabIndex === 0 ? (
-          <KanbanBoard columns={columns} selectedIndex={selectedIndex} onColumnClick={setSelectedIndex} />
-        ) : (
-          <AgentSessionView />
-        )}
+        <div className="flex-1 min-h-0">
+          {selectedTabIndex === 0 ? (
+            <KanbanBoard columns={columns} selectedIndex={selectedIndex} onColumnClick={setSelectedIndex} />
+          ) : (
+            <AgentSessionView />
+          )}
+        </div>
       </div>
       <div className="absolute bottom-4 right-4 z-50 flex flex-col gap-2">
         <TerminalModal isOpen={true} title="Error" message="Failed to connect to server" variant="error" />

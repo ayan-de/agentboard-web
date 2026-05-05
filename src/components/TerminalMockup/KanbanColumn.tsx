@@ -16,11 +16,11 @@ function KanbanColumn({ column, isSelected, onClick, className = '' }: KanbanCol
         className={`w-full px-3 py-1.5 rounded text-sm font-bold border border-[var(--border)] text-left transition-colors ${isSelected
           ? 'bg-[var(--primary)] text-[var(--background)]'
           : 'bg-[var(--background-panel)] text-[var(--foreground)]'
-        }`}
+          }`}
       >
         {column.title}
       </button>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 overflow-y-auto min-h-0">
         {column.tickets.map((ticket) => (
           <TicketCard key={ticket.id} ticket={ticket} />
         ))}
