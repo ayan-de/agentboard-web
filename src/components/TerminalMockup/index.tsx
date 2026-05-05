@@ -113,6 +113,36 @@ function HelpBar() {
   )
 }
 
+function TabBar({ tabs, selectedIndex, onTabClick }: { tabs: { id: string; label: string }[]; selectedIndex: number; onTabClick: (index: number) => void }) {
+  return (
+    <div className="flex items-center gap-2 px-1">
+      <div className="px-3 py-1 rounded-sm text-sm font-bold bg-[var(--primary)] text-[var(--background)] border border-[var(--primary)]">
+        agentboard
+      </div>
+      {tabs.map((tab, i) => (
+        <button
+          key={tab.id}
+          onClick={() => onTabClick(i)}
+          className={`px-3 py-1 rounded-sm text-sm font-bold transition-colors ${i === selectedIndex
+            ? 'text-[var(--primary)]'
+            : 'text-[var(--secondary)]'
+          }`}
+        >
+          {i + 1}: {tab.label}
+        </button>
+      ))}
+    </div>
+  )
+}
+
+function AgentSessionView() {
+  return (
+    <div className="flex-1 flex items-center justify-center">
+      <span className="text-2xl font-bold text-[var(--muted)]">YOUR AGENT HERE</span>
+    </div>
+  )
+}
+
 function BoardHeader({ title }: { title: string }) {
   return (
     <div className="flex flex-col gap-2">
@@ -164,11 +194,23 @@ interface TerminalWindowProps {
 
 function TerminalWindow({ columns, className = '' }: TerminalWindowProps) {
   const [selectedIndex, setSelectedIndex] = useState(0)
+  const [selectedTabIndex, setSelectedTabIndex] = useState(0)
+
+  const tabs = [
+    { id: 'agentboard', label: 'agentBoard' },
+    { id: 'agent-ses-01', label: 'agent-SES-01' },
+  ]
+
   return (
     <div className={`relative border border-[var(--border)] bg-[var(--background)] shadow-2xl ${className}`}>
       <TerminalHeader />
       <div className="relative aspect-video overflow-hidden p-3 bg-[var(--background)]">
-        <KanbanBoard columns={columns} selectedIndex={selectedIndex} onColumnClick={setSelectedIndex} />
+        <TabBar tabs={tabs} selectedIndex={selectedTabIndex} onTabClick={setSelectedTabIndex} />
+        {selectedTabIndex === 0 ? (
+          <KanbanBoard columns={columns} selectedIndex={selectedIndex} onColumnClick={setSelectedIndex} />
+        ) : (
+          <AgentSessionView />
+        )}
       </div>
       <div className="absolute bottom-4 right-4 z-50 flex flex-col gap-2">
         <TerminalModal isOpen={true} title="Error" message="Failed to connect to server" variant="error" />
