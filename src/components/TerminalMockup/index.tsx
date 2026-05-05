@@ -3,6 +3,7 @@
 import { useState, ReactNode } from 'react'
 import { Terminal } from 'lucide-react'
 import type { Ticket, Column, Priority } from './types'
+import TerminalModal from '@/components/ui/TerminalModal'
 
 function TagChip({ children, colorClass }: { children: ReactNode; colorClass: string }) {
   return (
@@ -73,8 +74,8 @@ function KanbanColumn({ column, isSelected, onClick, className = '' }: { column:
       <button
         onClick={onClick}
         className={`w-full px-3 py-1.5 rounded text-sm font-bold border border-[var(--border)] text-left transition-colors ${isSelected
-            ? 'bg-[var(--primary)] text-[var(--background)]'
-            : 'bg-[var(--background-panel)] text-[var(--foreground)]'
+          ? 'bg-[var(--primary)] text-[var(--background)]'
+          : 'bg-[var(--background-panel)] text-[var(--foreground)]'
           }`}
       >
         {column.title}
@@ -169,6 +170,7 @@ function TerminalWindow({ columns, className = '' }: TerminalWindowProps) {
       <div className="relative aspect-video overflow-hidden p-3 bg-[var(--background)]">
         <KanbanBoard columns={columns} selectedIndex={selectedIndex} onColumnClick={setSelectedIndex} />
       </div>
+      <TerminalModal isOpen={true} title="Success" message="Your changes have been saved" variant="success" />
     </div>
   )
 }
