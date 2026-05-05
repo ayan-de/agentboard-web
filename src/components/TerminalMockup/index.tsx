@@ -13,9 +13,9 @@ function TagChip({ children, colorClass }: { children: ReactNode; colorClass: st
 }
 
 const priorityConfig = {
-  low:      { label: 'low',      colorClass: 'text-[var(--muted)]' },
-  medium:   { label: 'medium',   colorClass: 'text-[var(--foreground)]' },
-  high:     { label: 'high',    colorClass: 'text-[var(--warning)]' },
+  low: { label: 'low', colorClass: 'text-[var(--muted)]' },
+  medium: { label: 'medium', colorClass: 'text-[var(--foreground)]' },
+  high: { label: 'high', colorClass: 'text-[var(--warning)]' },
   critical: { label: 'critical', colorClass: 'text-[var(--error)]' },
 }
 
@@ -72,11 +72,10 @@ function KanbanColumn({ column, isSelected, onClick, className = '' }: { column:
     <div className={`flex flex-col gap-2 min-w-0 border border-[var(--border)] rounded p-2 ${className}`}>
       <button
         onClick={onClick}
-        className={`w-full px-3 py-1.5 rounded text-sm font-bold border border-[var(--border)] text-left transition-colors ${
-          isSelected
+        className={`w-full px-3 py-1.5 rounded text-sm font-bold border border-[var(--border)] text-left transition-colors ${isSelected
             ? 'bg-[var(--primary)] text-[var(--background)]'
             : 'bg-[var(--background-panel)] text-[var(--foreground)]'
-        }`}
+          }`}
       >
         {column.title}
       </button>
@@ -92,12 +91,27 @@ function KanbanColumn({ column, isSelected, onClick, className = '' }: { column:
   )
 }
 
+function BoardHeader({ title }: { title: string }) {
+  return (
+    <div className="flex items-center gap-3 px-1 mb-2">
+      <div className="px-3 py-1 rounded-sm text-sm font-bold bg-[var(--primary)] text-[var(--background)]">
+        {title}
+      </div>
+      <div className="text-sm text-[var(--muted)]">Search:</div>
+      <div className="ml-auto text-sm text-[var(--muted)]">Apr 27 - May 26 2026 (2 cards)</div>
+    </div>
+  )
+}
+
 function KanbanBoard({ columns, selectedIndex, onColumnClick }: { columns: Column[]; selectedIndex: number; onColumnClick: (index: number) => void }) {
   return (
-    <div className="flex gap-3 h-full">
-      {columns.map((column, i) => (
-        <KanbanColumn key={column.id} column={column} isSelected={i === selectedIndex} onClick={() => onColumnClick(i)} className="flex-1" />
-      ))}
+    <div className="flex flex-col h-full">
+      <BoardHeader title="Board" />
+      <div className="flex gap-3 flex-1">
+        {columns.map((column, i) => (
+          <KanbanColumn key={column.id} column={column} isSelected={i === selectedIndex} onClick={() => onColumnClick(i)} className="flex-1" />
+        ))}
+      </div>
     </div>
   )
 }
