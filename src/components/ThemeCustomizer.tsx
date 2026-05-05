@@ -17,6 +17,11 @@ export default function ThemeCustomizer() {
       root.style.setProperty('--muted', newColors.secondary)
       root.style.setProperty('--accent', newColors.accent)
       root.style.setProperty('--background', newColors.background)
+      root.style.setProperty('--primary', newColors.primary)
+      root.style.setProperty('--secondary', newColors.secondary)
+      root.style.setProperty('--background-panel', newColors.backgroundPanel)
+      root.style.setProperty('--background-element', newColors.backgroundElement)
+      root.style.setProperty('--border', newColors.border)
     }
   }
 

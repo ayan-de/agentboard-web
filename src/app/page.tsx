@@ -26,6 +26,11 @@ export default function Home() {
       root.style.setProperty('--muted', theme.secondary)
       root.style.setProperty('--accent', theme.accent)
       root.style.setProperty('--background', theme.background)
+      root.style.setProperty('--primary', theme.primary)
+      root.style.setProperty('--secondary', theme.secondary)
+      root.style.setProperty('--background-panel', theme.backgroundPanel)
+      root.style.setProperty('--background-element', theme.backgroundElement)
+      root.style.setProperty('--border', theme.border)
     }
   }
 
