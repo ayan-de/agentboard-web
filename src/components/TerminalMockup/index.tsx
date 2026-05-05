@@ -67,9 +67,9 @@ function TicketCard({ ticket }: { ticket: Ticket }) {
   )
 }
 
-function KanbanColumn({ column, isSelected, onClick }: { column: Column; isSelected: boolean; onClick: () => void }) {
+function KanbanColumn({ column, isSelected, onClick, className = '' }: { column: Column; isSelected: boolean; onClick: () => void; className?: string }) {
   return (
-    <div className="flex flex-col gap-2 min-w-0">
+    <div className={`flex flex-col gap-2 min-w-0 ${className}`}>
       <button
         onClick={onClick}
         className={`w-full px-3 py-1.5 rounded text-sm font-bold border border-[var(--border)] text-left transition-colors ${
@@ -96,7 +96,7 @@ function KanbanBoard({ columns, selectedIndex, onColumnClick }: { columns: Colum
   return (
     <div className="flex gap-3 h-full">
       {columns.map((column, i) => (
-        <KanbanColumn key={column.id} column={column} isSelected={i === selectedIndex} onClick={() => onColumnClick(i)} />
+        <KanbanColumn key={column.id} column={column} isSelected={i === selectedIndex} onClick={() => onColumnClick(i)} className="flex-1" />
       ))}
     </div>
   )
