@@ -1,9 +1,9 @@
-import Image from 'next/image'
-import { Terminal, Download } from 'lucide-react'
+import { Download } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import Announcement from '@/components/ui/Announcement'
 import LineBorder from '@/components/ui/LineBorder'
+import TerminalMockup from '@/components/TerminalMockup'
 
 export default function Hero() {
   return (
@@ -37,27 +37,32 @@ export default function Hero() {
         </div>
 
         <div className="mt-16 relative">
-          <div className="relative border border-[var(--foreground)]/10 bg-[var(--background)]/50 shadow-2xl">
-            <div className="flex items-center gap-2 border-b border-[var(--foreground)]/10 px-4 py-2">
-              <div className="flex gap-1.5">
-                <div className="h-3 w-3 rounded-full bg-red-500/80" />
-                <div className="h-3 w-3 rounded-full bg-yellow-500/80" />
-                <div className="h-3 w-3 rounded-full bg-green-500/80" />
-              </div>
-              <div className="flex items-center gap-2 text-sm text-[var(--muted)]">
-                <Terminal className="h-4 w-4" />
-                agentboard
-              </div>
-            </div>
-            <div className="relative aspect-video overflow-hidden bg-[var(--background)]">
-              <Image
-                src="/image.png"
-                alt="AgentBoard TUI Preview"
-                fill
-                className="object-cover"
-              />
-            </div>
-          </div>
+          <TerminalMockup columns={[
+            {
+              id: 'todo',
+              title: 'TODO',
+              tickets: [
+                { id: 'AB-01', title: 'Implement context carry', status: 'backlog', priority: 'high', tags: ['feature', 'mcp'] },
+                { id: 'AB-02', title: 'Add Claude Code detection', status: 'backlog', priority: 'medium', tags: ['detection'] },
+                { id: 'AB-03', title: 'Write tests for orchestrator', status: 'backlog', priority: 'high', tags: ['testing'] },
+              ],
+            },
+            {
+              id: 'in_progress',
+              title: 'in progress',
+              tickets: [
+                { id: 'AB-04', title: 'Build theme registry', status: 'in_progress', priority: 'critical', tags: ['core', 'feature'] },
+                { id: 'AB-05', title: 'Design proposal flow', status: 'in_progress', priority: 'medium', tags: ['orchestration'] },
+              ],
+            },
+            {
+              id: 'done',
+              title: 'done',
+              tickets: [
+                { id: 'AB-06', title: 'Set up SQLite persistence', status: 'done', priority: 'high', tags: ['storage'] },
+              ],
+            },
+          ]} />
         </div>
       </Container>
     </section>
