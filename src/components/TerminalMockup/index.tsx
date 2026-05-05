@@ -70,7 +70,7 @@ function TicketCard({ ticket }: { ticket: Ticket }) {
 
 function KanbanColumn({ column, isSelected, onClick, className = '' }: { column: Column; isSelected: boolean; onClick: () => void; className?: string }) {
   return (
-    <div className={`flex flex-col gap-2 min-w-0 border border-[var(--border)] rounded p-2 ${className}`}>
+    <div className={`flex flex-col gap-2 min-w-0 border rounded p-2 ${isSelected ? 'border-[var(--borderActive)]' : 'border-[var(--border)]'} ${className}`}>
       <button
         onClick={onClick}
         className={`w-full px-3 py-1.5 rounded text-sm font-bold border border-[var(--border)] text-left transition-colors ${isSelected
