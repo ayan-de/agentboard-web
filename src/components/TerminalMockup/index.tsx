@@ -1,6 +1,6 @@
 'use client'
 
-import { ReactNode } from 'react'
+import { useState, ReactNode } from 'react'
 import { Terminal } from 'lucide-react'
 import type { Ticket, Column, Priority } from './types'
 
@@ -67,12 +67,19 @@ function TicketCard({ ticket }: { ticket: Ticket }) {
   )
 }
 
-function KanbanColumn({ column }: { column: Column }) {
+function KanbanColumn({ column, isSelected, onClick }: { column: Column; isSelected: boolean; onClick: () => void }) {
   return (
     <div className="flex flex-col gap-2 min-w-0">
-      <div className="px-3 py-1.5 bg-[var(--background-panel)] rounded text-sm font-bold text-[var(--foreground)] border border-[var(--border)]">
+      <button
+        onClick={onClick}
+        className={`w-full px-3 py-1.5 rounded text-sm font-bold border border-[var(--border)] text-left transition-colors ${
+          isSelected
+            ? 'bg-[var(--primary)] text-[var(--background)]'
+            : 'bg-[var(--background-panel)] text-[var(--foreground)]'
+        }`}
+      >
         {column.title}
-      </div>
+      </button>
       <div className="flex flex-col gap-2">
         {column.tickets.map((ticket) => (
           <TicketCard key={ticket.id} ticket={ticket} />
@@ -85,11 +92,11 @@ function KanbanColumn({ column }: { column: Column }) {
   )
 }
 
-function KanbanBoard({ columns }: { columns: Column[] }) {
+function KanbanBoard({ columns, selectedIndex, onColumnClick }: { columns: Column[]; selectedIndex: number; onColumnClick: (index: number) => void }) {
   return (
     <div className="flex gap-3 h-full">
-      {columns.map((column) => (
-        <KanbanColumn key={column.id} column={column} />
+      {columns.map((column, i) => (
+        <KanbanColumn key={column.id} column={column} isSelected={i === selectedIndex} onClick={() => onColumnClick(i)} />
       ))}
     </div>
   )
@@ -117,11 +124,12 @@ interface TerminalWindowProps {
 }
 
 function TerminalWindow({ columns, className = '' }: TerminalWindowProps) {
+  const [selectedIndex, setSelectedIndex] = useState(0)
   return (
     <div className={`relative border border-[var(--border)] bg-[var(--background)] shadow-2xl ${className}`}>
       <TerminalHeader />
       <div className="relative aspect-video overflow-hidden p-3 bg-[var(--background)]">
-        <KanbanBoard columns={columns} />
+        <KanbanBoard columns={columns} selectedIndex={selectedIndex} onColumnClick={setSelectedIndex} />
       </div>
     </div>
   )
