@@ -5,7 +5,7 @@ export default function Announcement() {
         New
       </span>
       <span className="text-lg text-[var(--muted)]">
-        Jira Integration is under development...
+        Jira + Vs Code Integration is under development...
       </span>
     </div>
   )
