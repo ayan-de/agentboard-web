@@ -7,7 +7,7 @@ import { useState } from 'react'
 
 const installCommands = [
   { id: 'curl', label: 'curl', command: 'curl -sSL https://agentboard.ayande.xyz/install.sh | bash' },
-  { id: 'npm', label: 'npm', command: 'npm install -g agentboard' },
+  { id: 'npm', label: 'npm', command: 'npm i @thisisayande/agentboard' },
   { id: 'bun', label: 'bun', command: 'bun install -g agentboard' },
   { id: 'brew', label: 'brew', command: 'brew install ayan-de/tap/agentboard' },
   { id: 'paru', label: 'paru', command: 'paru -S agentboard' },
