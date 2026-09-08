@@ -21,7 +21,7 @@ const defaultColors = {
   info: '#888888',
   text: '#ffffff',
   textMuted: '#888888',
-  background: '#000000',
+  background: '#131010',
   backgroundPanel: '#111111',
   backgroundElement: '#333333',
   border: '#333333',
