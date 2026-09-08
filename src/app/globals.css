@@ -2,29 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
-
 :root {
-  --background: #000000;
-  --foreground: #211E1E;
-  --muted: #4B4646;
-  --accent: #211E1E;
-  --secondary: #4B4646;
-  --primary: #211E1E;
+  --background: #1e1e2e;
+  --foreground: #cba6f7;
+  --muted: #89b4fa;
+  --accent: #f38ba8;
+  --secondary: #89b4fa;
+  --primary: #cba6f7;
+  --background-panel: #181825;
+  --background-element: #313244;
+  --border: #45475a;
+  --borderActive: #cba6f7;
   --content-offset: max(80px, calc((100vw - 1280px) / 2));
-}
 
-.dark {
-  --background: #000000;
-  --foreground: #F1ECEC;
-  --muted: #9A9595;
-  --accent: #F1ECEC;
-  --secondary: #9A9595;
-  --primary: #F1ECEC;
+  --font-sans: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', Consolas, monospace;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: 'JetBrains Mono', Consolas, monospace;
+  font-family: var(--font-mono);
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
+
+/* Headings carry the sans face; body copy and UI stay mono. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-sans);
+  text-wrap: balance;
+}
+

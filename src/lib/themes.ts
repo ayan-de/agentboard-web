@@ -2,7 +2,7 @@ import { ThemeInfo } from '@/types'
 
 export const themes: ThemeInfo[] = [
   {
-    name: 'default',
+    name: 'black and white',
     primary: '#ffffff',
     secondary: '#888888',
     accent: '#ffffff',
@@ -12,7 +12,7 @@ export const themes: ThemeInfo[] = [
     info: '#888888',
     text: '#ffffff',
     textMuted: '#888888',
-    background: '#000000',
+    background: '#131010',
     backgroundPanel: '#111111',
     backgroundElement: '#333333',
     border: '#333333',

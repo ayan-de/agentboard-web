@@ -11,7 +11,7 @@ interface ThemesProps {
 export default function Themes({ onSelectTheme }: ThemesProps) {
   return (
     <LineBorder>
-    <section className="py-20 sm:py-32">
+    <section id="themes" className="py-20 sm:py-32">
       <Container>
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">

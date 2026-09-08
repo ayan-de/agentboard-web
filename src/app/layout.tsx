@@ -1,4 +1,9 @@
 import type { Metadata } from 'next'
+// Self-hosted variable faces, the same two omarchy-site uses: Geist for
+// headings, JetBrains Mono for everything else.
+import '@fontsource-variable/geist'
+import '@fontsource-variable/jetbrains-mono'
+import '@fontsource-variable/jetbrains-mono/wght-italic.css'
 import './globals.css'
 import ThemeProvider from '@/components/ThemeProvider'
 import { ThemeContextProvider } from '@/lib/ThemeContext'

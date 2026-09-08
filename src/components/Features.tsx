@@ -10,12 +10,6 @@ import {
 import Container from '@/components/ui/Container'
 import LineBorder from '@/components/ui/LineBorder'
 
-const stats = [
-  { value: '150K+', label: 'Downloads' },
-  { value: '850', label: 'GitHub Stars' },
-  { value: '6.5M', label: 'Tokens Processed' },
-]
-
 const features = [
   { text: 'Modern Kanban TUI built with Bubble Tea' },
   { text: 'Spawn Claude Code, OpenCode, Cursor from one place' },
@@ -62,22 +56,13 @@ export default function Features() {
             </p>
           </div>
 
-          <div className="mt-12 flex justify-center gap-16 text-center">
-            {stats.map((s) => (
-              <div key={s.label}>
-                <div className="text-5xl font-bold text-[var(--foreground)]">{s.value}</div>
-                <div className="mt-1 text-sm text-[var(--muted)]">{s.label}</div>
-              </div>
-            ))}
-          </div>
-
           <div className="mt-16 grid gap-6 sm:grid-cols-2 max-w-3xl mx-auto">
             {featureGrid.map((f) => (
               <div
                 key={f.title}
-                className="flex items-start gap-4 rounded-sm border border-[var(--foreground)]/10 bg-[var(--background)] p-6"
+                className="flex items-start gap-4 rounded-sm border border-[var(--foreground)]/10 bg-[var(--background-element)] p-6"
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-sm bg-[var(--foreground)]/5 shrink-0">
+                <div className="flex h-10 w-10 items-center justify-center rounded-sm bg-[var(--foreground)]/10 shrink-0">
                   <f.icon className="h-5 w-5 text-[var(--foreground)]" />
                 </div>
                 <div>
