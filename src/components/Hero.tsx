@@ -90,7 +90,7 @@ export default function Hero() {
             <div
               data-hero-wordmark
               aria-hidden="true"
-              className="mx-auto mt-10 w-[88%] max-w-5xl"
+              className="mx-auto mt-10 w-[70%] max-w-3xl"
               style={{ aspectRatio: `${WORDMARK_WIDTH} / ${WORDMARK_HEIGHT}` }}
             >
               {!painted && <WordmarkFallback />}
