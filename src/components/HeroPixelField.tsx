@@ -97,6 +97,24 @@ const CHARGE_TIME = 1.1
 const CHARGE_FROM = 0.45
 const CHARGE_GROWTH = 1.6
 
+/** The field thins toward the top of the zone, where the announcement pill
+ *  sits, and reaches full density a little way down. Keeps a floor so the
+ *  top band still reads as field rather than empty background. */
+const DEPTH_FLOOR = 0.16
+const DEPTH_START = 24
+const DEPTH_REACH = 130
+
+/** How bright the sprite's glow is, against the pointer's. */
+const SPRITE_STRENGTH = 0.7
+/** Seconds the sprite flies before its first stamp, and between stamps. */
+const SPRITE_FIRST_STAMP_WAIT = [1, 2] as const
+const SPRITE_STAMP_WAIT = [2, 3] as const
+/** The sprite's own glow dims while it is winding up a stamp. */
+const SPRITE_CHARGE_GLOW = 0.4
+/** How far the sprite charges a stamp, as a share of a full hold: a quick
+ *  click's worth, never the bloom a long hold makes. */
+const SPRITE_STAMP_CHARGE = [0, 0.2] as const
+
 /** A click stamp: where the press landed and how it grows as it fades. */
 type Ping = {
   x: number
@@ -285,11 +303,43 @@ export function HeroPixelField({ onPainted, glyph = WORDMARK_GLYPH }: Props) {
 
     const sectionEl = host.closest<HTMLElement>('section, main')
     const pointer = { x: -1e4, y: -1e4 }
+    /** The sprite: where it is and how brightly it glows this frame. It
+     *  wanders the field on its own so the pixels keep gathering and
+     *  thinning without anyone touching the page. */
+    const sprite = { x: -1e4, y: -1e4, strength: 0 }
     let visible = true
     let strength = 0
     let targetStrength = 0
     let pings: Ping[] = []
     let holding: { x: number; y: number; start: number } | null = null
+    /** A stamp the sprite is charging: where, since when, and how far. */
+    let spriteHold: {
+      x: number
+      y: number
+      start: number
+      charge: number
+    } | null = null
+    /** When the sprite next starts charging a stamp. */
+    let spriteStampAt = Infinity
+
+    /** Send a stamp out from a point, bloomed to match how long it charged. */
+    const launch = (x: number, y: number, charge: number, now: number) => {
+      const from = CHARGE_FROM + CHARGE_GROWTH * charge
+      pings = [
+        ...pings.slice(-3),
+        {
+          x,
+          y,
+          born: now,
+          from,
+          to: (from + 1.0 + 3.2 * charge) * (0.92 + Math.random() * 0.16),
+          life: (0.65 + 0.55 * charge) * (0.92 + Math.random() * 0.16),
+        },
+      ]
+    }
+
+    const between = ([lo, hi]: readonly [number, number]) =>
+      lo + Math.random() * (hi - lo)
 
     const measure = () => {
       const box = host.getBoundingClientRect()
@@ -360,12 +410,18 @@ export function HeroPixelField({ onPainted, glyph = WORDMARK_GLYPH }: Props) {
       for (let r = 0; r < rows; r++) {
         const y = wmY + (rMin + r + 0.5) * wmCH
         const ny = (y / height) * 2 - 1
+        // Density also builds with depth: sparse across the top band, full
+        // strength once the field is clear of the announcement.
+        const depth = Math.min(
+          1,
+          Math.max(DEPTH_FLOOR, (y / dpr - DEPTH_START) / DEPTH_REACH),
+        )
         for (let c = 0; c < cols; c++) {
           const x = wmX + (cMin + c + 0.5) * wmCW
           const nx = (x / width) * 2 - 1
           const rr = Math.sqrt(nx * nx + ny * ny * 0.82)
           const eased = Math.min(1, Math.max(0, (rr - 0.42) / 0.85))
-          ramp[r * cols + c] = eased * eased * clearOf(x, y)
+          ramp[r * cols + c] = eased * eased * depth * clearOf(x, y)
         }
       }
       return true
@@ -379,6 +435,44 @@ export function HeroPixelField({ onPainted, glyph = WORDMARK_GLYPH }: Props) {
     const draw = (time: number) => {
       const t = reducedMotion ? 0 : time / 1000
 
+      // The sprite drifts on two slow, out-of-phase sines, so it never
+      // retraces the same path. It stands as clear of the hero's copy as the
+      // cursor does, and every so often it stops to lay down a stamp.
+      let spriteGoal = 0
+      if (!reducedMotion) {
+        const rx = 0.44 * (1 + 0.1 * Math.sin(t * 0.11))
+        const ry = 0.38 * (1 + 0.1 * Math.sin(t * 0.09 + 2))
+        sprite.x = width * (0.5 + rx * Math.sin(t * 0.65))
+        sprite.y = height * (0.48 + ry * Math.sin(t * 0.39 + 1.1))
+        const box = host.getBoundingClientRect()
+        spriteGoal =
+          strengthAt(box.left + sprite.x / dpr, box.top + sprite.y / dpr) *
+          SPRITE_STRENGTH
+
+        if (spriteStampAt === Infinity) {
+          spriteStampAt = time + between(SPRITE_FIRST_STAMP_WAIT) * 1000
+        }
+        if (!spriteHold && time >= spriteStampAt) {
+          spriteHold = {
+            x: sprite.x,
+            y: sprite.y,
+            start: time,
+            charge: between(SPRITE_STAMP_CHARGE),
+          }
+        }
+        if (spriteHold) {
+          spriteHold.x = sprite.x
+          spriteHold.y = sprite.y
+          spriteGoal *= SPRITE_CHARGE_GLOW
+          if (chargeOf(time, spriteHold.start) >= spriteHold.charge) {
+            launch(spriteHold.x, spriteHold.y, spriteHold.charge, time)
+            spriteHold = null
+            spriteStampAt = time + between(SPRITE_STAMP_WAIT) * 1000
+          }
+        }
+      }
+      sprite.strength += (spriteGoal - sprite.strength) * 0.08
+
       // The pointer itself is never smoothed: the cells under the cursor are
       // the cells that light. Only the fade in and out of the field's
       // response is eased.
@@ -388,7 +482,9 @@ export function HeroPixelField({ onPainted, glyph = WORDMARK_GLYPH }: Props) {
       ctx.fillRect(0, 0, width, height)
       if (cols === 0 || rows === 0) return
 
-      /** The glows alive this frame. Only the pointer's, for now. */
+      const reachOf = (level: number) =>
+        CURSOR_CELLS * wmCW * (0.45 + 0.55 * level)
+      /** The glows alive this frame: the pointer's and the sprite's. */
       const glows: { x: number; y: number; strength: number; reach: number }[] =
         []
       if (strength > 0.01) {
@@ -396,7 +492,15 @@ export function HeroPixelField({ onPainted, glyph = WORDMARK_GLYPH }: Props) {
           x: pointer.x,
           y: pointer.y,
           strength,
-          reach: CURSOR_CELLS * wmCW * (0.45 + 0.55 * strength),
+          reach: reachOf(strength),
+        })
+      }
+      if (sprite.strength > 0.01) {
+        glows.push({
+          x: sprite.x,
+          y: sprite.y,
+          strength: sprite.strength,
+          reach: reachOf(sprite.strength),
         })
       }
 
@@ -415,12 +519,14 @@ export function HeroPixelField({ onPainted, glyph = WORDMARK_GLYPH }: Props) {
           })
         }
       }
-      if (holding) {
+      for (const charging of [holding, spriteHold]) {
+        if (!charging) continue
         stamps.push({
-          x: holding.x,
-          y: holding.y,
+          x: charging.x,
+          y: charging.y,
           cellPx:
-            wmCW * (CHARGE_FROM + CHARGE_GROWTH * chargeOf(time, holding.start)),
+            wmCW *
+            (CHARGE_FROM + CHARGE_GROWTH * chargeOf(time, charging.start)),
           amp: 0.9,
         })
       }
@@ -675,19 +781,7 @@ export function HeroPixelField({ onPainted, glyph = WORDMARK_GLYPH }: Props) {
         targetStrength = inside ? level : 0
       }
       const now = performance.now()
-      const charge = chargeOf(now, holding.start)
-      const from = CHARGE_FROM + CHARGE_GROWTH * charge
-      pings = [
-        ...pings.slice(-3),
-        {
-          x: holding.x,
-          y: holding.y,
-          born: now,
-          from,
-          to: (from + 1.0 + 3.2 * charge) * (0.92 + Math.random() * 0.16),
-          life: (0.65 + 0.55 * charge) * (0.92 + Math.random() * 0.16),
-        },
-      ]
+      launch(holding.x, holding.y, chargeOf(now, holding.start), now)
       holding = null
     }
 
