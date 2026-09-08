@@ -11,21 +11,21 @@ interface ThemeContextValue {
 const ThemeContext = createContext<ThemeContextValue | null>(null)
 
 const defaultColors = {
-  name: 'default',
-  primary: '#ffffff',
-  secondary: '#888888',
-  accent: '#ffffff',
-  error: '#ffffff',
-  warning: '#ffffff',
-  success: '#ffffff',
-  info: '#888888',
-  text: '#ffffff',
-  textMuted: '#888888',
-  background: '#131010',
-  backgroundPanel: '#111111',
-  backgroundElement: '#333333',
-  border: '#333333',
-  borderActive: '#ffffff',
+  name: 'catppuccin',
+  primary: '#cba6f7',
+  secondary: '#89b4fa',
+  accent: '#f38ba8',
+  error: '#f38ba8',
+  warning: '#fab387',
+  success: '#a6e3a1',
+  info: '#89dceb',
+  text: '#cdd6f4',
+  textMuted: '#6c7086',
+  background: '#1e1e2e',
+  backgroundPanel: '#181825',
+  backgroundElement: '#313244',
+  border: '#45475a',
+  borderActive: '#cba6f7',
 }
 
 export function ThemeContextProvider({ children }: { children: ReactNode }) {

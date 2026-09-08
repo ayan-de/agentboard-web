@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --background: #131010;
-  --foreground: #ffffff;
-  --muted: #888888;
-  --accent: #ffffff;
-  --secondary: #888888;
-  --primary: #ffffff;
-  --background-panel: #111111;
-  --background-element: #333333;
-  --border: #333333;
-  --borderActive: #ffffff;
+  --background: #1e1e2e;
+  --foreground: #cba6f7;
+  --muted: #89b4fa;
+  --accent: #f38ba8;
+  --secondary: #89b4fa;
+  --primary: #cba6f7;
+  --background-panel: #181825;
+  --background-element: #313244;
+  --border: #45475a;
+  --borderActive: #cba6f7;
   --content-offset: max(80px, calc((100vw - 1280px) / 2));
 
   --font-sans: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
@@ -39,3 +39,4 @@ h6 {
   font-family: var(--font-sans);
   text-wrap: balance;
 }
+
