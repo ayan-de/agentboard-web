@@ -53,7 +53,7 @@ export default function Hero() {
   return (
     <LineBorder>
       <section
-        className="relative overflow-hidden border-b border-[var(--border)] pb-16 sm:pb-24"
+        className="relative overflow-hidden pb-16 sm:pb-24"
         style={{ background: 'var(--background)' }}
       >
         {/* The field is bounded to this zone rather than the whole section,
