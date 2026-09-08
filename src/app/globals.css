@@ -6,21 +6,16 @@
 
 :root {
   --background: #000000;
-  --foreground: #211E1E;
-  --muted: #4B4646;
-  --accent: #211E1E;
-  --secondary: #4B4646;
-  --primary: #211E1E;
+  --foreground: #ffffff;
+  --muted: #888888;
+  --accent: #ffffff;
+  --secondary: #888888;
+  --primary: #ffffff;
+  --background-panel: #111111;
+  --background-element: #333333;
+  --border: #333333;
+  --borderActive: #ffffff;
   --content-offset: max(80px, calc((100vw - 1280px) / 2));
-}
-
-.dark {
-  --background: #000000;
-  --foreground: #F1ECEC;
-  --muted: #9A9595;
-  --accent: #F1ECEC;
-  --secondary: #9A9595;
-  --primary: #F1ECEC;
 }
 
 body {
